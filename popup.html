@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/m_public.css" />
+		<script src="js/jquery-2.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/flexible_css.debug.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/flexible.debug.js" type="text/javascript" charset="utf-8"></script>
+		<title>弹窗模块</title>
+		<style type="text/css">
+			.popup-wrap {
+				width: 85%;
+				max-width: 450px;
+				box-shadow: 0 6px 14px rgba(0, 0, 0, .2);
+				border-radius: 0.1rem;
+				-webkit-border-radius: 0.1rem;
+				overflow: hidden;
+				background-color: #ffffff;
+			}
+			
+			.popup-tit {
+				font-size: 0.4rem;
+				text-align: center;
+				padding: 0.4rem;
+				position: relative;
+			}
+			
+			.popup-close {
+				position: absolute;
+				width: 0.4rem;
+				height: 0.4rem;
+				background-color: #323232;
+				top: 50%;
+				right: 0.3rem;
+				background: url(img/close_ico.png) no-repeat center;
+				background-size: 0.4rem auto;
+				transform: translateY(-50%);
+				-webkit-transform: translateY(-50%);
+			}
+			
+			.del-input {
+				display: none;
+				width: 0.6rem;
+				height: 0.6rem;
+				background: url(img/del_input_ico.png) no-repeat center;
+				background-size: 0.5rem auto;
+				position: absolute;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				-webkit-transform: translateY(-50%);
+			}
+			
+			.popup-con {
+				font-size: 0.32rem;
+				padding: 0.4rem;
+				line-height: 1.6;
+				background-color: #ffffff;
+				position: relative;
+			}
+			
+			.popup-btn {
+				border-top: 1px #E1E1EB solid;
+			}
+			
+			.reserve-from {
+				padding: 0 0.4rem;
+			}
+			
+			.input-group {
+				/*输入框组*/
+				width: 100%;
+				background-color: #ffffff;
+				border: 1px #E1E1EB solid;
+				height: 1.2rem;
+				margin-bottom: 0.2rem;
+				display: box;
+				display: -webkit-box;
+				/* OLD - iOS 6-, Safari 3.1-6 */
+				display: -moz-box;
+				/* OLD - Firefox 19- (buggy but mostly works) */
+				display: -ms-flexbox;
+				/* TWEENER - IE 10 */
+				display: -webkit-flex;
+				/* NEW - Chrome */
+				display: flex;
+				/* NEW, Spec - Opera 12.1, Firefox 20+ */
+				align-items: center;
+				-webkit-align-items: center;
+				flex-flow: row nowrap;
+			}
+			
+			.input-prefix {
+				/*输入框前缀*/
+				-webkit-box-flex: 0;
+				-moz-flex-grow: 0;
+				-webkit-flex-grow: 0;
+				flex-grow: 0;
+				white-space: nowrap;
+				/*不允许折行*/
+				vertical-align: middle;
+				font-size: 0.36rem;
+				width: 2.4rem;
+			}
+			
+			.input-box {
+				/*输入框*/
+				width: 100%;
+				-webkit-box-flex: 1.0;
+				-moz-flex-grow: 1;
+				-webkit-flex-grow: 1;
+				flex-grow: 1;
+				border: 0;
+				font-size: 0.36rem;
+			}
+			
+			.error-tips {
+				background-color: #fffaf4;
+				text-align: center;
+				font-size: 0.32rem;
+				padding: 0.1rem 0;
+				color: #FF641E;
+			}
+			
+			.cover-layout {
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, .4);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="popup-wrap fix-tran-xy" style="display: none;">
+			<div class="popup-tit bg-gray">
+				<span>popup-tit</span>
+				<div class="popup-close" id="close-popup"></div>
+			</div>
+			<div class="popup-con">TinyBox 2javascript modal windows Click here for details.No Animation, No Close Button, Auto Width/Height, Custom Styling Ajax Post, Fixed Width/Height...</div>
+			<div class="popup-btn">
+				<a href="" class="btn btn-block btn-l btn-orange">button</a>
+			</div>
+		</div>
+
+		<div class="popup-wrap popup-formal fix-tran-xy" style="display:block;">
+			<div class="popup-tit bg-snow">
+				<span>在线咨询</span>
+				<div class="popup-close" id="close-popup"></div>
+			</div>
+			<p id="name-error" class="error-tips" style="display:none;">请正确填写姓名</p>
+			<p id="phone-error" class="error-tips" style="display: none;">请正确填写联系电话</p>
+			<form id="form" name="form" method="post" action="">
+				<div class="reserve-from">
+					<div class="input-group" id="name-input">
+						<label class="input-prefix" for="nameid1">您的姓名：</label>
+						<input type="text" name="name" id="nameid1" class="input-box" value="" placeholder="请填写正确姓名" autocomplete="off" />
+					</div>
+					<div class="input-group" id="phone-input">
+						<label class="input-prefix" for="phoneid1">联系电话：</label>
+						<input type="tel" name="phone" id="phoneid1" class="input-box" placeholder="请正确填写联系电话" value="" autocomplete="off" />
+					</div>
+				</div>
+				<div class="popup-con">
+					<p>请填写真实有效的个人信息，众禄投资顾问将尽快与您联系。</p>
+					<p>众禄财富热线：<a href="tel:4006-788-887" class="link-color">4006-788-887</a></p>
+				</div>
+				<div class="popup-btn">
+					<input type="submit" name="button" id="bottonid1" value="确 定" class="btn btn-block btn-orangered">
+				</div>
+			</form>
+			
+		</div>
+		
+		<div class="reserve-wrap" id="reserve-popup" style="display:none;">
+			<form id="form" name="form" method="post" action="http://www.jjmmw.com/campaign/yuyue?next=http://m.jjmmw.com/zt/m_pzb/?yuyue=ok&amp;userfrom=m_pzb&amp;campaignfrom=m_pzb">
+				<div class="reserve-con">
+					<div class="reserve-tips">
+						<p class="tc f-l b mb-3">预约咨询</p>请填写真实有效的个人信息，众禄投资顾问将尽快与您联系。
+					</div>
+					<div class="input-group mb-2">
+						<label class="input-prefix" for="nameid1">您的姓名：</label>
+						<input type="text" name="name" id="nameid1" class="input-box" value="" placeholder="请填写正确姓名" autocomplete="off" />
+					</div>
+					<p id="name-error" class="error-tips" style="display:none;">*请正确填写姓名</p>
+					<div class="input-group">
+						<label class="input-prefix" for="phoneid1">联系电话：</label>
+						<input type="tel" name="phone" id="phoneid1" class="input-box" placeholder="请正确填写联系电话" value="" autocomplete="off" />
+					</div>
+					<p id="phone-error" class="error-tips" style="display: none;">*请正确填写联系电话</p>
+				</div>
+				<div class="reserve-btn">
+					<div class="reserve-btn-item" style="border-right: 1px #E1E1EB solid;">
+						<a href="javascript:void(0)" class="reserve-btn-style" id="hide-reserve">取消</a>
+					</div>
+					<div class="reserve-btn-item">
+						<input type="submit" name="button" id="bottonid1" value="确定" class="reserve-btn-style">
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<div class="cover-layout"></div>
+
+		<script type="text/javascript">
+			$(function() {
+				$(".del-input").click(function() {
+					$("#nameid1").val("");
+					$("#nameid1").focus();
+					$(this).hide();
+				})
+
+				$("input[type=text],input[type=tel]").focus(function() {
+//					$(".error-tips").hide();
+//					$('#name-input,#phone-input').css("border-bottom-color","#e1e1eb")
+				});
+			});
+		</script>
+
+		<!--预约表单判断开始-->
+		<script type="text/javascript">
+			$("#form").on('submit', function() {
+				$('#name-error').hide();
+				$('#phone-error').hide();
+				var user = $.trim($('#nameid1').val());
+				var phone = $.trim($('#phoneid1').val());
+				var regBox = {
+					regUser: /^[\u4d00-\u9fa5, ·]{1,25}$/,
+					regMobile: /^0?1[3|4|5|8][0-9]\d{8}$/,
+					regTel: /^0\d{2,3}-\d{7,8}$/
+				}
+				var mflag = regBox.regMobile.test(phone);
+				var tflag = regBox.regTel.test(phone);
+				var uflag = regBox.regUser.test(user);
+				if (!uflag) {
+					$('#name-error').show();
+					$('#name-input').css("border-bottom-color","#ff641e")
+					return false;
+				}
+				if (!mflag && !tflag) {
+					$('#phone-error').show();
+					$('#phone-input').css("border-bottom-color","#ff641e")
+					return false;
+				}
+			});
+		</script>
+		<!--预约表单判断结束-->
+		<!--预约成功判断-->
+		<script type="text/javascript">
+			if (window.location.href.indexOf('yuyue=ok') != -1) {
+				$('#coverlayer').show();
+				$('#reserve-ok').show();
+			}
+		</script>
+		<!--预约成功判断-->
+
+	</body>
+
+</html>

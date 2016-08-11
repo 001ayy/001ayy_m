@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no" name="format-detection" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="flexible" content="maximum-dpr=2" />
+		<link rel="stylesheet" type="text/css" href="css/topbar.css" />
+		<link rel="stylesheet" type="text/css" href="css/m_public.css" />
+		<link rel="stylesheet" type="text/css" href="css/m_layout.css" />
+		<script src="https://im.zlfund.cn/static/mobi/js/m.base.min.js"></script>
+		<script src="js/flexible.debug.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/flexible_css.debug.js" type="text/javascript" charset="utf-8"></script>
+		<title>移动端专题模板2016</title>
+
+		<style type="text/css">
+			.tit {
+				font-size: 20px;
+				margin-bottom: 10px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		
+		<div class="wrapper">
+
+
+			<!--判断是否APP环境开始-->
+			<script type="text/javascript">
+				$(function() {
+					if (fromapp()) {
+						$('#top-bar').hide();
+						$('.wrapper').css("padding-top", "0");
+					} 
+					else {
+						$('#top-bar').show();
+						$('.wrapper').css("padding-top", "50px");
+					}
+				});
+			</script>
+			<!--判断是否APP环境结束-->
+
+			
+		</div>
+
+	</body>
+
+</html>

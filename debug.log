@@ -1,0 +1,5 @@
+[0330/154418:ERROR:proxy_service_factory.cc(105)] Cannot use V8 Proxy resolver in single process mode.
+[0516/094039:ERROR:proxy_service_factory.cc(105)] Cannot use V8 Proxy resolver in single process mode.
+[0531/203438:ERROR:gpu_info_collector_win.cc(103)] Can't retrieve a valid WinSAT assessment.
+[0531/203438:ERROR:proxy_service_factory.cc(105)] Cannot use V8 Proxy resolver in single process mode.
+[0630/113049:ERROR:proxy_service_factory.cc(105)] Cannot use V8 Proxy resolver in single process mode.

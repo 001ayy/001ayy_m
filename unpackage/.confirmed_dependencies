@@ -1,0 +1,13 @@
+{
+	"index.html": {
+		"resources": [
+			"css/m_layout.css",
+			"js/flexible_css.debug.js",
+			"css/topbar.css",
+			"js/flexible.debug.js",
+			"js/fakeloader.js",
+			"css/m_public.css",
+			"img/icon_120x120.png"
+		]
+	}
+}
